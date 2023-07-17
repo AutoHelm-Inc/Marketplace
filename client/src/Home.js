@@ -1,13 +1,32 @@
 import { useState, useEffect, Text, input } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate  } from 'react-router-dom'
 import Explore from './Explore'
 import "./App.css"
 import PersonOnComputer from './assets/person_on_computer.svg'
+import SearchIcon from './assets/search-icon.png'
+import TopBar from "./components/TopBar";
+import Footer from "./components/Footer";
 
 const Home = () => {
+
+    const navigate = useNavigate();
+
+    const searchBarFunc = (event) => {
+        const query = event.target.value;
+        if (query != ""){
+            navigate(`/explore?q=${query}`);
+        }
+    };
+
+    const searchIconFunc = (event) => {
+        const query = document.querySelector(".searchBar").value;
+        if (query != ""){
+            navigate(`/explore?q=${query}`);
+        }
+    };
     return (
         <div className="home">
-
+            <TopBar></TopBar>
             <div className="homeContentContainer">
                 <div className="HomeLeftSideContainer">
                     {/* <p style="font-size:50px;">
@@ -20,26 +39,26 @@ const Home = () => {
                     <h1 style={{ color: "White", fontSize: 45 }}>Automation Workflows</h1>
                     <h1 style={{ color: "White", fontSize: 45 }}>Made for Convenience.</h1>
 
-                    <input style={{
-                        marginTop: 20,
-                        width: "100%",
-                        paddingLeft: "20px",
-                        paddingTop: "20px",
-                        paddingBottom: "20px",
-                        fontSize: 18,
-                        borderRadius: 30,
-                    }} placeholder="Search for workflow..." value={input} />
+                    <div className="searchBarContainer">  
+                        <div className="searchIcon">
+                            <img src={SearchIcon} alt="Search" onClick={searchIconFunc}/>
+                        </div>
+                        <input style={{
+                            borderRadius: 30,
+                            fontSize: 18
+                        }} className="searchBar" placeholder="Search For Workflow..." value={input} onKeyPress={(e) => e.key === 'Enter' && searchBarFunc(e)}>
+                        </input>
+                    </div>
                 </div>
-
                 <div className="PersonOnComputerContainer">
                     <img src={PersonOnComputer} style={{ height: '85vh', alignSelf: 'flex-end' }} alt="Person on Computer" />
                 </div>
             </div>
-
-
             <Routes>
                 <Route path="explore" element={<Explore />} />
             </Routes>
+            
+            <Footer></Footer>
         </div>
     );
 }

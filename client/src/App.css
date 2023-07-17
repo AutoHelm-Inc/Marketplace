@@ -14,6 +14,13 @@
   vertical-align: top;
 }
 
+.explore {
+  background-color: var(--PrimaryBackgroundColor);
+  min-height: 100vh;
+  text-align: center;
+  vertical-align: top;
+}
+
 .homeContentContainer {
   display: flex;
   align-items: center;
@@ -31,6 +38,70 @@
 .HomeLeftSideContainer {
   /* background-color: var(--BlueAccent); */
   padding-left: 5%;
+}
+
+.topBar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  z-index: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2%;
+}
+
+.topBarLinksContainer{
+  display: flex;
+  margin-right: 25%;
+}
+
+.topBarLinks{
+  color: var(--BlueAccent);
+  text-decoration: none;
+  margin-right: 100%;
+}
+
+.topBarLogoName{
+  color: var(--BlueAccent);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 15%;
+}
+
+.logoText{
+  margin-left: 10px;
+}
+
+.searchBarContainer{
+  position:relative;
+}
+
+.searchBar {
+  margin-top: 20;
+  width: 100%;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.searchIcon{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.footer{
+  background-color: var(--BlueAlternateAccent);
+  padding: 2%;
+}
+
+.creditLink{
+  color: var(--OneDarkerThanPrimary);
+  text-decoration: none;
 }
 
 .inputAndButton {
