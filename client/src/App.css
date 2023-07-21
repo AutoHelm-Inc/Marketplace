@@ -122,3 +122,66 @@
   fontSize: 18,
   borderRadius: 30, */
 }
+
+.entryContainer{
+  width: 265px;
+  height: 350px;
+  border-radius: 5%;
+  box-shadow: 0px 20px 8px var(--OneDarkerThanPrimary);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--TwoLighterThanPrimary);
+  text-align: left;
+  position: relative;
+}
+
+.entryTitle{
+  margin-left: 7%;
+  margin-top: 5%;
+  margin-bottom: 0%;
+  color: var(--BlueAccent);
+}
+
+.entryUsername{
+  margin-left: 7%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  color: var(--OneDarkerThanPrimary);
+}
+
+.entryDateCreated{
+  margin-left: 7%;
+  margin-top: 0%;
+  margin-bottom: 5%;
+  color: var(--OneDarkerThanPrimary);
+}
+
+.entryDescription{
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  font-size: 80%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: lightgray;
+  flex-grow: 1;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 11;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.entryDownload{
+  align-self: center;
+  text-align: center;
+  width: 70%;
+  border-radius: 5%;
+  padding: 2%;
+  background-color: var(--BlueAlternateAccent);
+  color: var(--OneDarkerThanPrimary);
+  margin: 5%;
+  text-decoration: none;
+}

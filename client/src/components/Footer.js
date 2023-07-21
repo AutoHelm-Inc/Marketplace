@@ -13,7 +13,7 @@ const Footer = () => {
                     <Link to="https://www.vecteezy.com/free-vector/vector" className="creditLink">Logo Boat Vector by Vecteezy</Link>
                 </div>
                 <div>
-                    <Link to="https://icons8.com/icon/132/search" className="creditLink">Search Icon by</Link><Link to="https://icons8.com">Icons8</Link>
+                    <Link to="https://icons8.com/icon/132/search" className="creditLink">Search Icon by </Link><Link className="creditLink" to="https://icons8.com">Icons8</Link>
                 </div>
             </div>
         </div>
