@@ -101,7 +101,6 @@ export async function databaseToJson(){
 //function that checks our database entrys and grabs projects
 //that match the search string and returns an array with all 
 //relevant workflows
-//Note specifying empty string pulls everything
 export function searchDatabaseProjects(databaseJson, searchString){
 
     var keys = Object.keys(databaseJson);
@@ -109,7 +108,7 @@ export function searchDatabaseProjects(databaseJson, searchString){
 
     var index = 0;
     keys.forEach(key => {
-        if(key.toLowerCase().indexOf(searchString.toLowerCase()) >= 0 || searchString === ""){
+        if(key.indexOf(searchString)){
             succesfulQueries.push(key);
         }
     })
