@@ -5,19 +5,6 @@ import Home from './Home'
 import Explore from './Explore'
 
 function App() {
-
-  const [backendExpressData, setBackendExpressData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/serverUpTest").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendExpressData(data)
-      }
-    )
-  }, [])
-
   return (
     <Router>
       <Routes>
