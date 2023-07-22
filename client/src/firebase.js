@@ -44,7 +44,7 @@ export function downloadAhilFile(storage, fileName, filePath, openLink){
         
         link.href = url;
         link.download = fileName;
-        if(openLink == true)
+        if(openLink)
             link.click();
 
     })

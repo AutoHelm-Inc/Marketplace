@@ -9,7 +9,7 @@ const AHILEntry = ({ entryTitle, entryUsername, entryDateCreated, entryDescripti
     const storage = getStorage(app);
 
     const downloadClick = () => {
-        downloadAhilFile(storage, entryTitle, entryPath);
+        downloadAhilFile(storage, entryTitle, entryPath, true);
     };
 
     return (
