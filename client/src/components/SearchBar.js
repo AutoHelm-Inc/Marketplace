@@ -11,11 +11,8 @@ const SearchBar = () => {
 
     const searchBarFunc = (event) => {
         const query = event.target.value;
-        if (query == ""){
-            navigate(`/explore`);
-        }else{
-            navigate(`/explore?q=${query}`);
-        }
+        navigate(`/explore?q=${query}`);
+ 
     };
 
     const searchIconFunc = (event) => {
@@ -23,7 +20,7 @@ const SearchBar = () => {
         if (query == ""){
             navigate(`/explore`);
         }else{
-            navigate(`/explore?q=${query}`);
+            navigate(`/explore?q=`);
         }
     };
 

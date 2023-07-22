@@ -102,7 +102,7 @@ export function searchDatabaseProjects(databaseJson, searchString){
 
     var index = 0;
     keys.forEach(key => {
-        if(key.toLowerCase().indexOf(searchString.toLowerCase()) >= 0 || searchString === ""){
+        if(searchString === "" || key.toLowerCase().indexOf(searchString.toLowerCase()) >= 0){
             succesfulQueries.push(key);
         }
     })
