@@ -15,7 +15,7 @@ const TopBar = () => {
                     <span className="logoText">AutoHelm</span>
                 </Link>
                 <div className="topBarLinksContainer">
-                    <Link to="/explore" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
+                    <Link to="/explore?q=" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
                         Explore
                     </Link>
                 </div>
