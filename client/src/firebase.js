@@ -17,7 +17,7 @@ const firebaseConfig = {
 
 //function to return firebase app details, this is passed in when running getStorage()
 //ex. downloadAhilFile(getStorage(app))
-export function initalizeFirebase(){
+export function  initializeFirebase(){
     const app = initializeApp(firebaseConfig);
     return app;
 }
@@ -28,7 +28,7 @@ export function downloadAhilFile(storage, fileName, filePath, openLink){
 
     const link = document.createElement("a");
     link.href = "";
-    link.target = "_blank";
+    //link.target = "_blank";
 
     getDownloadURL(sRef(storage, filePath))
     .then((url) => {
@@ -44,7 +44,7 @@ export function downloadAhilFile(storage, fileName, filePath, openLink){
         
         link.href = url;
         link.download = fileName;
-        if(openLink == true)
+        if(openLink)
             link.click();
 
     })
@@ -104,22 +104,28 @@ export async function databaseToJson(){
 //Note specifying empty string pulls everything
 export function searchDatabaseProjects(databaseJson, searchString){
 
-    var keys = Object.keys(databaseJson);
-    var succesfulQueries = [];
-
-    var index = 0;
-    keys.forEach(key => {
-        if(key.toLowerCase().indexOf(searchString.toLowerCase()) >= 0 || searchString === ""){
-            succesfulQueries.push(key);
-        }
-    })
-
-    var ret = [];
-    for(var i = 0; i < succesfulQueries.length; i++){
-        ret.push(databaseJson[succesfulQueries[i]]);
+    if(searchString == null || databaseJson == null){
+        return [];
     }
+    else{
+        var keys = Object.keys(databaseJson);
+        var succesfulQueries = [];
 
-    return ret;
+        var index = 0;
+        keys.forEach(key => {
+            if(key.toLowerCase().indexOf(searchString.toLowerCase()) >= 0 || searchString === ""){
+                succesfulQueries.push(key);
+            }
+        })
+        
+        var ret = [];
+
+        for(var i = 0; i < succesfulQueries.length; i++){
+            ret.push(databaseJson[succesfulQueries[i]]);
+        }
+
+        return ret;
+    }
 
 
 }

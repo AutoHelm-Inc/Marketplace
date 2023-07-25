@@ -19,6 +19,7 @@
   min-height: 100vh;
   text-align: center;
   vertical-align: top;
+  align-self: center;
 }
 
 .homeContentContainer {
@@ -26,6 +27,26 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.exploreContentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  align-items: center;
+  /* justify-content: center; */
+  height: 100vh;
+  margin-left: 17%;
+  margin-right: 17%;
+  padding-top: 1%;
+}
+
+.exploreSearch{
+  margin-left: 20%;
+  margin-right: 30%;
+  padding-top: 7%;
+  padding-bottom: 0%;
+  margin-bottom: 0%;
 }
 
 .PersonOnComputerContainer {
@@ -140,6 +161,9 @@
   margin-top: 5%;
   margin-bottom: 0%;
   color: var(--BlueAccent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .entryUsername{

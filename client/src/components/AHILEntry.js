@@ -1,22 +1,25 @@
-import React from "react";
+import { React } from "react";
 import "../App.css"
-import { Link } from "react-router-dom";
+import {getStorage} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
+import { initializeFirebase as initializeFirebase, downloadAhilFile } from '../firebase';
 
-const AHILEntry = () => {
+const AHILEntry = ({ entryTitle, entryUsername, entryDateCreated, entryDescription, entryPath }) => {
+
+    const app = initializeFirebase();
+    const storage = getStorage(app);
+
+    const downloadClick = () => {
+        downloadAhilFile(storage, entryTitle, entryPath, true);
+    };
+
     return (
         <div className="AHILEntry">
             <div className="entryContainer">
-               <h1 className="entryTitle">Hello World</h1>
-               <h4 className="entryUsername">Made by bcarrion</h4>
-               <h6 className="entryDateCreated">15/03/2023</h6>
-               <p className="entryDescription">Apple Inc. is quietly working on artificial intelligence tools that could
-                                                challenge those of OpenAI Inc., Alphabet Inc.’s Google and others, but the
-                                                company has yet to devise a clear strategy for releasing the technology to consumers.
-                                                The iPhone maker has built its own framework to create large language models — the AI-based
-                                                systems at the heart of new offerings like ChatGPT and Google’s Bard — according
-                                                to people with knowledge of the efforts. With that foundation, known as “Ajax,”
-                                                Apple also has created a chatbot service that some engineers call “Apple GPT.”</p>
-               <Link className="entryDownload">Download</Link>
+               <h1 className="entryTitle">{entryTitle}</h1>
+               <h4 className="entryUsername">Made by {entryUsername}</h4>
+               <h6 className="entryDateCreated">{entryDateCreated}</h6>
+               <p className="entryDescription">{entryDescription}</p>
+               <div onClick={downloadClick} className="entryDownload" style={{cursor: "pointer"}}>DOWNLOAD</div>
             </div>
         </div>
     );
