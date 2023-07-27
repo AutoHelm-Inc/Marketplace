@@ -3,11 +3,11 @@ import "../App.css"
 import SearchIcon from '../assets/search-icon.png';
 import { useNavigate } from 'react-router-dom';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 
     const navigate = useNavigate();
 
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState(props.searchText);
 
     const searchBarFunc = (event) => {
         const query = event.target.value;
@@ -35,7 +35,7 @@ const SearchBar = () => {
                         borderRadius: 30,
                         fontSize: 18,
                         paddingLeft: 20,
-                    }} className="searchBar" placeholder="Search For Workflow..." onChange={(e) => setInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && searchBarFunc(e)}
+                    }} className="searchBar" value={inputValue} placeholder="Search For Workflow..." onChange={(e) => setInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && searchBarFunc(e)}
                     />
                 </div>
             </div>
