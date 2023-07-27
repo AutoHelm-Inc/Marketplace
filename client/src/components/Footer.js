@@ -15,6 +15,9 @@ const Footer = () => {
                 <div>
                     <Link to="https://icons8.com/icon/132/search" className="creditLink">Search Icon by </Link><Link className="creditLink" to="https://icons8.com">Icons8</Link>
                 </div>
+                <div>
+                    <Link to="https://www.freepik.com/free-vector/seo-concept-illustration_13717663.htm#query=search&position=8&from_view=search&track=sph" className="creditLink">NoSearchResults Image by storyset on Freepik</Link>
+                </div>
             </div>
         </div>
     );

@@ -7,16 +7,16 @@ import Explore from "../Explore";
 const TopBar = () => {
     return (
         <div>
-            <div className="topBar"> 
+            <div className="topBar">
                 <Link to="/" className="topBarLogoName">
                     <div className="logo">
-                        <img src={Logo} style={{ width: '7vh', height: 'auto'}} alt="AutoHelm Logo" />
+                        <img src={Logo} style={{ width: '9vh', height: 'auto' }} alt="AutoHelm Logo" />
                     </div>
-                    <span className="logoText">AutoHelm</span>
+                    <p className="logoText">AutoHelm</p>
                 </Link>
                 <div className="topBarLinksContainer">
                     <Link to="/explore?q=" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
-                        Explore
+                        <p className="linkText">Explore</p>
                     </Link>
                 </div>
             </div>
