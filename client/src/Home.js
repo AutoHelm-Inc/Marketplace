@@ -20,13 +20,13 @@ const Home = () => {
                     <p style="font-size:50px;">
                         All made for you.
                     </p> */}
-                    <h1 style={{ color: "White", fontSize: 45, alignSelf: "center" }}>Automation Workflows</h1>
-                    <h1 style={{ color: "White", fontSize: 45, alignSelf: "center" }}>Made for Convenience.</h1>
+                    <h1 style={{ color: "White", fontSize: '300%', alignSelf: "center" }}>Automation Workflows</h1>
+                    <h1 style={{ color: "White", fontSize: '250%', alignSelf: "center" }}>Made for Convenience.</h1>
 
                     <SearchBar />
                 </div>
                 <div className="PersonOnComputerContainer">
-                    <img src={PersonOnComputer} style={{ height: '85vh', alignSelf: 'flex-end' }} alt="Person on Computer" />
+                    <img src={PersonOnComputer} style={{ height: '100%', alignSelf: 'flex-end' }} alt="Person on Computer" />
                 </div>
             </div>
             <Footer></Footer>

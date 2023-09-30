@@ -28,6 +28,8 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .exploreContentContainer {
@@ -55,11 +57,14 @@
   margin-bottom: 0%;
 }
 
-.PersonOnComputerContainer {
-  display: flex;
-  align-items: center;
-  /* background-color: var(--BlueAccent); */
-  height: 90vh;
+@media screen and (min-width: 1500px){
+  .PersonOnComputerContainer {
+    display: flex;
+    align-items: center;
+    /* background-color: var(--BlueAccent); */
+    height: 85vh;
+    overflow:hidden;
+  }
 }
 
 .HomeLeftSideContainer {
@@ -67,6 +72,7 @@
   align-self: center;
   padding-left: 0%;
   padding-right: 0%;
+  text-wrap: nowrap;
 }
 
 .topBar {
