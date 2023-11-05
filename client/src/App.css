@@ -61,13 +61,47 @@
   margin-bottom: 0%;
 }
 
-@media screen and (min-width: 1500px){
-  .PersonOnComputerContainer {
+.HomeScreenText {
+  color: white;
+  font-size: 3vw;
+  align-self: center;
+}
+
+@media screen and (min-width: 800px){
+  .PersonOnComputerContainerRight {
     display: flex;
     align-items: center;
     /* background-color: var(--BlueAccent); */
-    height: 85vh;
+    width: 50%;
     overflow:hidden;
+  }
+
+  .PersonOnComputerContainerBottom {
+    /* background-color: var(--BlueAccent); */
+    display: none;
+  }
+
+  .HomeLeftSideContainer {
+    /* background-color: var(--BlueAccent); */
+    align-self: center;
+    padding-left: 0%;
+    padding-right: 0%;
+    text-wrap: nowrap;
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .PersonOnComputerContainerBottom {
+    /* background-color: var(--BlueAccent); */
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    overflow:hidden;
+  }
+
+  .HomeScreenText {
+    font-size: 200%;
   }
 }
 
