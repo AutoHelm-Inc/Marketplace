@@ -16,12 +16,12 @@ const Home = () => {
                     <h1 className="HomeScreenText">Automation Workflows</h1>
                     <h1 className="HomeScreenText">Made for Convenience.</h1>
                     <SearchBar />
-                    <div className="PersonOnComputerContainerBottom">
+                    {/* <div className="PersonOnComputerContainerBottom">
                         <img src={PersonOnComputer} style={{ width: '90%'}} alt="Person on Computer" />
-                    </div>
+                    </div> */}
                 </div>
                 <div className="PersonOnComputerContainerRight">
-                    <img src={PersonOnComputer} style={{ height: '100%'}} alt="Person on Computer" />
+                    <img src={PersonOnComputer} style={{ height: '100%' }} alt="Person on Computer" />
                 </div>
             </div>
             <Footer></Footer>

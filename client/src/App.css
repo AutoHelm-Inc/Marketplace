@@ -29,9 +29,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
   padding-left: 5%;
   padding-right: 5%;
+  /* background-color: aquamarine; */
 }
 
 .exploreContentContainer {
@@ -67,13 +68,13 @@
   align-self: center;
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 800px) {
   .PersonOnComputerContainerRight {
     display: flex;
     align-items: center;
     /* background-color: var(--BlueAccent); */
     width: 50%;
-    overflow:hidden;
+    overflow: hidden;
   }
 
   .PersonOnComputerContainerBottom {
@@ -97,7 +98,7 @@
     justify-content: center;
     align-self: center;
     width: 100%;
-    overflow:hidden;
+    overflow: hidden;
   }
 
   .HomeScreenText {
@@ -123,6 +124,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 2%;
+  height: 10vh;
 }
 
 .topBarLinksContainer {
