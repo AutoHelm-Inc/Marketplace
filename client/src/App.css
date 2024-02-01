@@ -29,7 +29,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
+  padding-left: 5%;
+  padding-right: 5%;
+  /* background-color: aquamarine; */
 }
 
 .exploreContentContainer {
@@ -54,16 +57,53 @@
   align-items: center;
   margin-left: 20%;
   margin-right: 20%;
-  padding-top: 7%;
+  /* padding-top: 10%; */
   padding-bottom: 0%;
   margin-bottom: 0%;
 }
 
-.PersonOnComputerContainer {
-  display: flex;
-  align-items: center;
-  /* background-color: var(--BlueAccent); */
-  height: 90vh;
+.HomeScreenText {
+  color: white;
+  font-size: 3vw;
+  align-self: center;
+}
+
+@media screen and (min-width: 800px) {
+  .PersonOnComputerContainerRight {
+    display: flex;
+    align-items: center;
+    /* background-color: var(--BlueAccent); */
+    width: 50%;
+    overflow: hidden;
+  }
+
+  .PersonOnComputerContainerBottom {
+    /* background-color: var(--BlueAccent); */
+    display: none;
+  }
+
+  .HomeLeftSideContainer {
+    /* background-color: var(--BlueAccent); */
+    align-self: center;
+    padding-left: 0%;
+    padding-right: 0%;
+    text-wrap: nowrap;
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .PersonOnComputerContainerBottom {
+    /* background-color: var(--BlueAccent); */
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .HomeScreenText {
+    font-size: 200%;
+  }
 }
 
 .HomeLeftSideContainer {
@@ -71,10 +111,11 @@
   align-self: center;
   padding-left: 0%;
   padding-right: 0%;
+  text-wrap: nowrap;
 }
 
 .topBar {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   right: 0;
@@ -83,6 +124,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 2%;
+  height: 10vh;
 }
 
 .topBarLinksContainer {

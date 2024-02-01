@@ -13,20 +13,15 @@ const Home = () => {
             <TopBar></TopBar>
             <div className="homeContentContainer">
                 <div className="HomeLeftSideContainer">
-                    {/* <p style="font-size:50px;">
-                        Automation Workflows
-                    </p>
-
-                    <p style="font-size:50px;">
-                        All made for you.
-                    </p> */}
-                    <h1 style={{ color: "White", fontSize: 45, alignSelf: "center" }}>Automation Workflows</h1>
-                    <h1 style={{ color: "White", fontSize: 45, alignSelf: "center" }}>Made for Convenience.</h1>
-
+                    <h1 className="HomeScreenText">Automation Workflows</h1>
+                    <h1 className="HomeScreenText">Made for Convenience.</h1>
                     <SearchBar />
+                    {/* <div className="PersonOnComputerContainerBottom">
+                        <img src={PersonOnComputer} style={{ width: '90%'}} alt="Person on Computer" />
+                    </div> */}
                 </div>
-                <div className="PersonOnComputerContainer">
-                    <img src={PersonOnComputer} style={{ height: '85vh', alignSelf: 'flex-end' }} alt="Person on Computer" />
+                <div className="PersonOnComputerContainerRight">
+                    <img src={PersonOnComputer} style={{ height: '100%' }} alt="Person on Computer" />
                 </div>
             </div>
             <Footer></Footer>
