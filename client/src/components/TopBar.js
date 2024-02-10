@@ -18,6 +18,9 @@ const TopBar = () => {
                     <Link to="/explore?q=" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
                         <p className="linkText">Explore</p>
                     </Link>
+                    <Link to="/login" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
+                        <p className="linkText">Login</p>
+                    </Link>
                 </div>
             </div>
         </div>

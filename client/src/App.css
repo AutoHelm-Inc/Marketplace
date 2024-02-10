@@ -25,6 +25,15 @@
   align-items: center;
 }
 
+.login {
+  background-color: var(--PrimaryBackgroundColor);
+  min-height: 100vh;
+  text-align: center;
+  vertical-align: top;
+  align-self: center;
+  align-items: center;
+}
+
 .homeContentContainer {
   display: flex;
   align-items: center;
@@ -33,6 +42,30 @@
   padding-left: 5%;
   padding-right: 5%;
   /* background-color: aquamarine; */
+}
+
+.loginContentContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding-left: 5%;
+  padding-right: 5%;
+  /* background-color: aquamarine; */
+}
+
+.authFieldsBox {
+  /* display: flex; */
+  background-color: var(--TwoLighterThanPrimary);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 30%;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  border-radius: 20px;
 }
 
 .exploreContentContainer {
@@ -129,7 +162,7 @@
 
 .topBarLinksContainer {
   display: flex;
-  margin-right: 11%;
+  margin-right: 20%;
 }
 
 .topBarLinks {
@@ -155,6 +188,18 @@
   margin-left: 10px;
   font-weight: bold;
   font-size: 26px;
+}
+
+.LoginLogoText {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.LoginLogoAndTextContainer {
+  display: flex;
+  margin: 0 auto;
+  align-self: center;
 }
 
 .searchBarContainer {
@@ -285,4 +330,14 @@
   margin: 5%;
   margin-bottom: 7%;
   text-decoration: none;
+}
+
+.loginButton {
+  font-weight: bold;
+  text-align: center;
+  border-radius: 15px;
+  padding: 3%;
+  background-color: var(--BlueAlternateAccent);
+  color: white;
+  margin: 0 auto;
 }
