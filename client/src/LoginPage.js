@@ -8,6 +8,7 @@ import { initializeFirebase as initializeFirebase, databaseToJson, searchDatabas
 import NoSearchResults from './assets/no_search_results.svg'
 import { Link } from "react-router-dom";
 import Logo from "./assets/AutoHelmLogo.png"
+import PersonLoggingIn from './assets/person_logging_in.svg'
 
 const Login = (props) => {
 
@@ -37,23 +38,33 @@ const Login = (props) => {
                         fontSize: 15,
                         paddingLeft: 20,
                         paddingRight: 20,
-                    }} className="searchBar" value={emailInputValue} placeholder="Email" onChange={(e) => setEmailInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter'}
+                    }} className="emailInput" value={emailInputValue} placeholder="Email" onChange={(e) => setEmailInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter'}
                     />
 
                     <div style={{ height: 20 }}></div>
 
-                    <input style={{
+                    <input type="password" style={{
                         borderRadius: 20,
                         fontSize: 15,
                         paddingLeft: 20,
                         paddingRight: 20,
-                    }} className="searchBar" value={passwordInputValue} placeholder="Password" onChange={(e) => setPasswordInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter'}
+                    }} className="passwordInput" value={passwordInputValue} placeholder="Password" onChange={(e) => setPasswordInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter'}
                     />
 
                     <div style={{ height: 40 }}></div>
 
                     <div onClick={() => { }} className="loginButton" style={{ cursor: "pointer" }}>Login</div>
                 </div>
+
+                <div style={{ height: 20 }}></div>
+                <small className="PolicyText">One account for marketplace & desktop</small>
+                <div style={{ height: 5 }}></div>
+                <small className="PolicyText">Please read our privacy policy for more information</small>
+
+                <div className="peronLoggingInImageContainer">
+                    <img src={PersonLoggingIn} style={{  height: 400, maxHeight:500   }} alt="Person logging in" />
+                </div>
+                
             </div>
 
             <Footer></Footer>
