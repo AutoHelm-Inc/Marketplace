@@ -4,11 +4,10 @@ import Footer from "./components/Footer";
 import AHILEntry from "./components/AHILEntry";
 import { useLocation } from "react-router-dom";
 import SearchBar from "./components/SearchBar";
-import { initializeFirebase as initializeFirebase, databaseToJson, searchDatabaseProjects } from './firebase';
+import { databaseToJson, searchDatabaseProjects } from './firebase';
 import NoSearchResults from './assets/no_search_results.svg'
 
-const Explore = () => {
-
+const Explore = (props) => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const query = queryParams.get("q");
@@ -17,7 +16,7 @@ const Explore = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const app = initializeFirebase();
+
             const answer = await databaseToJson();
             const queriedData = searchDatabaseProjects(answer, query);
             console.log(queriedData)

@@ -9,7 +9,7 @@ const TopBar = () => {
         <div>
             <div className="topBar">
                 <Link to="/" className="topBarLogoName">
-                    <div className="logo">
+                    <div className="logo" style={{ marginLeft: 25 }}>
                         <img src={Logo} style={{ width: '9vh', height: 'auto' }} alt="AutoHelm Logo" />
                     </div>
                     <p className="logoText">AutoHelm</p>
@@ -17,6 +17,9 @@ const TopBar = () => {
                 <div className="topBarLinksContainer">
                     <Link to="/explore?q=" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
                         <p className="linkText">Explore</p>
+                    </Link>
+                    <Link to="/login" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
+                        <p className="linkText">Login</p>
                     </Link>
                 </div>
             </div>
