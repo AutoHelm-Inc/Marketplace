@@ -15,7 +15,7 @@ import ReactLoading from 'react-loading';
 import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-
+    const { firebaseApp } = props.firebaseApp;
     const [emailInputValue, setEmailInputValue] = useState(props.searchText);
     const [passwordInputValue, setPasswordInputValue] = useState(props.searchText);
     const [firebaseInitialized, setFirebaseInitialized] = useState(true);
@@ -27,7 +27,7 @@ const Login = (props) => {
     // }, 200)
 
     const handleLogin = async () => {
-        await login(app, emailInputValue, passwordInputValue);
+        await login(firebaseApp, emailInputValue, passwordInputValue);
         // const nav = useNavigate();
         // nav.push("/explore");
     };

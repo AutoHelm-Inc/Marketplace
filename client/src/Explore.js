@@ -7,8 +7,9 @@ import SearchBar from "./components/SearchBar";
 import { initializeFirebase as initializeFirebase, databaseToJson, searchDatabaseProjects } from './firebase';
 import NoSearchResults from './assets/no_search_results.svg'
 
-const Explore = () => {
+const Explore = (props) => {
 
+    const { firebaseApp } = props.firebaseApp;
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const query = queryParams.get("q");
@@ -17,11 +18,12 @@ const Explore = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const app = initializeFirebase();
-            const answer = await databaseToJson();
+            // const app = initializeFirebase();
+            const answer = await databaseToJson(firebaseApp);
             const queriedData = searchDatabaseProjects(answer, query);
             console.log(queriedData)
             setQueriedJson(queriedData);
+            console.log("lets see...");
         };
         fetchData();
     }, [query]);
@@ -42,7 +44,7 @@ const Explore = () => {
                     </div>
                     :
                     queriedJson.map((entry) => (
-                        <AHILEntry entryTitle={entry.Name} entryUsername={entry.Username} entryDateCreated={entry.Created} entryDescription={entry.Description} entryPath={entry.Path} />
+                        <AHILEntry app={firebaseApp} entryTitle={entry.Name} entryUsername={entry.Username} entryDateCreated={entry.Created} entryDescription={entry.Description} entryPath={entry.Path} />
                     ))}
             </div>
 

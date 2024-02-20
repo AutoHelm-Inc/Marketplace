@@ -19,22 +19,21 @@ const firebaseConfig = {
 
 //function to return firebase app details, this is passed in when running getStorage()
 //ex. downloadAhilFile(getStorage(app))
-export function initializeFirebase() {
+export async function initializeFirebase() {
     const app = initializeApp(firebaseConfig);
+    console.log("LOOOOL");
     return app;
 }
 
 export async function login(app, email, password) {
     try {
-        if (!app) {
-            app = initializeApp(firebaseConfig);
-        }
+        // if (!app) {
+        //     app = initializeApp(firebaseConfig);
+        // }
         const auth = getAuth(app);
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         console.log(user.email);
-
-
     } catch (e) {
         console.log("error signing in");
     }
@@ -218,8 +217,12 @@ export function getPublicWorkflows(databaseJson_public, searchString) {
 
 
 //LEGACY FUNCTIONS, DO NOT USE, ONLY HERE UNTIL WE MIGRATE TO NEW FUNCTIONS
-export async function databaseToJson() {
+export async function databaseToJson(app) {
 
+    if (!app) {
+        app = initializeFirebase();
+        console.log("it still isnt intialized");
+    }
     var jsonString;
     const dbRef = ref(getDatabase(), "Cloud_Saves/");
 

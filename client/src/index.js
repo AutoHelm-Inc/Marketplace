@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { initializeFirebase } from './firebase'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const firebaseApp = await initializeFirebase();
 root.render(
   <React.StrictMode>
-    <App />
+    <App firebaseApp={firebaseApp} />
   </React.StrictMode>
 );
 

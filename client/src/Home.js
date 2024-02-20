@@ -5,7 +5,8 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import React, { useState } from "react";
 
-const Home = () => {
+const Home = (props) => {
+    const { firebaseApp } = props.firebaseApp;
     const [inputValue, setInputValue] = useState("");
 
     return (

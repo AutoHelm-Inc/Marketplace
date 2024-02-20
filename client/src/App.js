@@ -5,13 +5,15 @@ import Home from './Home'
 import Explore from './Explore'
 import Login from './LoginPage'
 
-function App() {
+function App(props) {
+  const firebaseApp = props.firebaseApp;
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home firebaseApp={firebaseApp} />} />
+        <Route path="/explore" element={<Explore firebaseApp={firebaseApp} />} />
+        <Route path="/login" element={<Login firebaseApp={firebaseApp} />} />
       </Routes>
     </Router>
   )
