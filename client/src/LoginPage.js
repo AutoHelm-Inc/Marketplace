@@ -14,10 +14,14 @@ import { login } from './firebase'
 import ReactLoading from 'react-loading';
 import { useNavigate } from "react-router-dom";
 
+import { auth } from './firebase'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+
 const Login = (props) => {
-    const app = props.firebaseApp;
-    const [emailInputValue, setEmailInputValue] = useState(props.searchText);
-    const [passwordInputValue, setPasswordInputValue] = useState(props.searchText);
+    const firebaseApp = props.firebaseApp;
+    const [emailInputValue, setEmailInputValue] = useState("");
+    const [passwordInputValue, setPasswordInputValue] = useState("");
     const [firebaseInitialized, setFirebaseInitialized] = useState(true);
     // const [app, setApp] = useState(null);
 
@@ -26,10 +30,21 @@ const Login = (props) => {
     //     setFirebaseInitialized(true);
     // }, 200)
 
-    const handleLogin = async () => {
-        await login(app, emailInputValue, passwordInputValue);
+    const handleLogin = () => {
+        // await login(firebaseApp, emailInputValue, passwordInputValue);
         // const nav = useNavigate();
         // nav.push("/explore");
+        signInWithEmailAndPassword(auth, emailInputValue, passwordInputValue)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user.email);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
     };
 
 

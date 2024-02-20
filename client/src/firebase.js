@@ -1,7 +1,8 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
-import { getStorage, getDownloadURL, ref as sRef } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
-import { getDatabase, onValue, get, child, ref } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+import { initializeApp } from "firebase/app";
+// import { initializeApp as initializeApp2 } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+import { getStorage, getDownloadURL, ref as sRef } from "firebase/storage";
+import { getDatabase, onValue, get, child, ref } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 //Firebase details
@@ -16,12 +17,17 @@ const firebaseConfig = {
     measurementId: "G-GT1YFR4R3M"
 };
 
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+// initializeApp2(firebaseConfig)
+
 //function to return firebase app details, this is passed in when running getStorage()
 //ex. downloadAhilFile(getStorage(app))
-export function initializeFirebase() {
-    const app = initializeApp(firebaseConfig);
-    return app;
+export async function initializeFirebase() {
+    const firebaseApp = initializeApp(firebaseConfig);
+    return firebaseApp;
 }
+
 
 //This function return an <a> tag with a link to download the ahil file,
 //setting openLink=true, will open the .ahil file in a new tab
@@ -58,19 +64,31 @@ export function downloadAhilFile(storage, fileName, filePath, openLink) {
 
 }
 
-export async function login(app, email, password) {
-    try {
-        if (!app) {
-            console.log("fpwoiefpweijf");
-            app = await initializeApp(firebaseConfig);
-        }
-        const auth = getAuth(app);
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        console.log(user.email);
-    } catch (e) {
-        console.log(e);
-    }
+export async function login(email, password) {
+    // try {
+    //     if (!app) {
+    //         console.log("fpwoiefpweijf");
+    //         app = await initializeApp(firebaseConfig);
+    //     }
+    //     const auth = getAuth(app);
+    //     const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    //     const user = userCredential.user;
+    //     console.log(user.email);
+    // } catch (e) {
+    //     console.log(e);
+    // }
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log(user.email);
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
 
 }
 
@@ -219,7 +237,7 @@ export function getPublicWorkflows(databaseJson_public, searchString) {
 export async function databaseToJson() {
 
     var jsonString;
-    const dbRef = ref(getDatabase(), "Cloud_Saves/");
+    const dbRef = ref(getDatabase(app), "Cloud_Saves/");
 
     await get(dbRef).then((snapshot) => {
         if (snapshot.exists()) {

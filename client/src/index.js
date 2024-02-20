@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { initializeFirebase } from './firebase';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const app = initializeFirebase();
+const app = await initializeFirebase();
 root.render(
   <React.StrictMode>
     <App firebaseApp={app} />
