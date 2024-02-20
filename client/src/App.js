@@ -6,14 +6,12 @@ import Explore from './Explore'
 import Login from './LoginPage'
 
 function App(props) {
-  const app = props.firebaseApp;
-
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home firebaseApp={app} />} />
-        <Route path="/explore" element={<Explore firebaseApp={app} />} />
-        <Route path="/login" element={<Login firebaseApp={app} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   )

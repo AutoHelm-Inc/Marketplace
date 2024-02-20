@@ -1,52 +1,20 @@
 import { useState, useEffect, React } from "react";
 import TopBar from "./components/TopBar";
 import Footer from "./components/Footer";
-import AHILEntry from "./components/AHILEntry";
-import { useLocation } from "react-router-dom";
-import SearchBar from "./components/SearchBar";
-import { initializeFirebase as initializeFirebase, databaseToJson, searchDatabaseProjects } from './firebase';
-import NoSearchResults from './assets/no_search_results.svg'
 import { Link } from "react-router-dom";
 import Logo from "./assets/AutoHelmLogo.png"
 import PersonLoggingIn from './assets/person_logging_in.svg'
 import Teamwork from './assets/teamwork.svg'
-import { login } from './firebase'
 import ReactLoading from 'react-loading';
-import { useNavigate } from "react-router-dom";
 
-import { auth } from './firebase'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth, login } from './firebase'
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 const Login = (props) => {
-    const firebaseApp = props.firebaseApp;
     const [emailInputValue, setEmailInputValue] = useState("");
     const [passwordInputValue, setPasswordInputValue] = useState("");
     const [firebaseInitialized, setFirebaseInitialized] = useState(true);
-    // const [app, setApp] = useState(null);
-
-    // const app = initializeFirebase();
-    // setTimeout(() => {
-    //     setFirebaseInitialized(true);
-    // }, 200)
-
-    const handleLogin = () => {
-        // await login(firebaseApp, emailInputValue, passwordInputValue);
-        // const nav = useNavigate();
-        // nav.push("/explore");
-        signInWithEmailAndPassword(auth, emailInputValue, passwordInputValue)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user.email);
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
-    };
-
 
     // if (!firebaseInitialized) {
     //     return <ReactLoading type={"spin"} color={"#5298FA"} height={100} width={100} />
@@ -106,7 +74,7 @@ const Login = (props) => {
 
                         <div style={{ height: 40 }}></div>
 
-                        <div onClick={() => { handleLogin() }} className="loginButton" style={{ cursor: "pointer" }}>Login</div>
+                        <div onClick={() => { login(emailInputValue, passwordInputValue) }} className="loginButton" style={{ cursor: "pointer" }}>Login</div>
                     </div>
 
                     <div style={{ height: 20 }}></div>

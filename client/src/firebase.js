@@ -19,14 +19,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-// initializeApp2(firebaseConfig)
-
-//function to return firebase app details, this is passed in when running getStorage()
-//ex. downloadAhilFile(getStorage(app))
-export async function initializeFirebase() {
-    const firebaseApp = initializeApp(firebaseConfig);
-    return firebaseApp;
-}
+export const storage = getStorage(app);
 
 
 //This function return an <a> tag with a link to download the ahil file,
@@ -64,7 +57,7 @@ export function downloadAhilFile(storage, fileName, filePath, openLink) {
 
 }
 
-export async function login(email, password) {
+export function login(email, password) {
     // try {
     //     if (!app) {
     //         console.log("fpwoiefpweijf");

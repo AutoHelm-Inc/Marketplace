@@ -1,11 +1,11 @@
 import { React } from "react";
 import "../App.css"
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
-import { initializeFirebase as initializeFirebase, downloadAhilFile } from '../firebase';
+import { downloadAhilFile, storage } from '../firebase';
 
-const AHILEntry = ({ firebaseApp, entryTitle, entryUsername, entryDateCreated, entryDescription, entryPath }) => {
+const AHILEntry = ({ entryTitle, entryUsername, entryDateCreated, entryDescription, entryPath }) => {
 
-    const storage = getStorage(firebaseApp);
+    // const storage = getStorage(firebaseApp);
 
     const downloadClick = () => {
         downloadAhilFile(storage, entryTitle, entryPath, true);
