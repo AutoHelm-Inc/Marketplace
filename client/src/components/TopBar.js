@@ -9,7 +9,7 @@ const TopBar = () => {
         <div>
             <div className="topBar">
                 <Link to="/" className="topBarLogoName">
-                    <div className="logo">
+                    <div className="logo" style={{ paddingLeft: 20 }}>
                         <img src={Logo} style={{ width: '9vh', height: 'auto' }} alt="AutoHelm Logo" />
                     </div>
                     <p className="logoText">AutoHelm</p>
