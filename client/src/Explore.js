@@ -29,7 +29,7 @@ const Explore = (props) => {
         <div className="explore">
             <TopBar></TopBar>
             <div className="exploreSearch">
-                <SearchBar searchText={location.search.substring(3)} />
+                <SearchBar searchText={location.search.substring(3)} navURL={"/explore"}/>
             </div>
             <div className="exploreContentContainer">
                 {queriedJson.length == 0 ?

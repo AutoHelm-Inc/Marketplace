@@ -6,6 +6,7 @@ import { useLocation, Navigate } from "react-router-dom";
 import SearchBar from "./components/SearchBar";
 import { databaseToJson, searchDatabaseProjects, getUserWorkflows, auth, databaseToJson_Private, databaseToJson_Public } from './firebase';
 import NoSearchResults from './assets/no_search_results.svg'
+import { useAuth } from './contexts/AuthContext'
 
 const MyWorkflows = (props) => {
     const location = useLocation();
@@ -13,7 +14,7 @@ const MyWorkflows = (props) => {
     const query = queryParams.get("q");
 
     const [queriedJson, setQueriedJson] = useState([]);
-    const [user, setUser] = useState();
+    const { authUser: user } = useAuth();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,8 +23,11 @@ const MyWorkflows = (props) => {
             }
             const databaseJsonPrivate = await databaseToJson_Private(auth.currentUser.email);
             const databaseJsonPublic = await databaseToJson_Public();
-            const queriedData = getUserWorkflows(auth.currentUser.email, databaseJsonPrivate, databaseJsonPublic);
-            console.log(queriedData)
+            let queriedData = getUserWorkflows(auth.currentUser.email, databaseJsonPrivate, databaseJsonPublic);
+            console.log(queriedData);
+            if (query) {    
+                queriedData = queriedData.filter((workflow) => workflow["Name"].toLowerCase().includes(query.toLowerCase()));
+            }
             setQueriedJson(queriedData);
         };
         fetchData();
@@ -33,12 +37,11 @@ const MyWorkflows = (props) => {
         return <Navigate to="/" replace/>
     }
 
-
     return (
         <div className="explore">
             <TopBar></TopBar>
             <div className="exploreSearch">
-                <SearchBar searchText={location.search.substring(3)} />
+                <SearchBar searchText={location.search.substring(3)} navURL={"/myworkflows"} />
             </div>
             <div className="exploreContentContainer">
                 {queriedJson.length == 0 ?

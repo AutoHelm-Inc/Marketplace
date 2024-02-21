@@ -114,7 +114,7 @@ export async function databaseGetEntry_Public(entryName) {
 export async function databaseToJson_Private(email) {
 
     var jsonString;
-    const dbRef = ref(getDatabase(), "Private/" + email.split("@")[0] + (email.split("@")[1]).split(".")[0] + "/");
+    const dbRef = ref(getDatabase(app), "Private/" + email.split("@")[0] + (email.split("@")[1]).split(".")[0] + "/");
 
     await get(dbRef).then((snapshot) => {
         if (snapshot.exists()) {

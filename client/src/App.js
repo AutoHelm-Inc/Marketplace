@@ -5,16 +5,19 @@ import Home from './Home'
 import Explore from './Explore'
 import Login from './LoginPage'
 import MyWorkflows from './MyWorkflows'
+import { AuthProvider } from './contexts/AuthContext'
 
 function App(props) {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/myworkflows" element={<MyWorkflows />} />
-      </Routes>
+      <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/myworkflows" Component={MyWorkflows}/>
+          </Routes>
+      </AuthProvider>
     </Router>
   )
 }

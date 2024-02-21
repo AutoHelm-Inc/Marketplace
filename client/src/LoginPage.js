@@ -1,14 +1,14 @@
 import { useState, useEffect, React, cloneElement } from "react";
 import TopBar from "./components/TopBar";
 import Footer from "./components/Footer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import Logo from "./assets/AutoHelmLogo.png"
 import PersonLoggingIn from './assets/person_logging_in.svg'
 import Teamwork from './assets/teamwork.svg'
 import ReactLoading from 'react-loading';
 
-import { auth, login } from './firebase'
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from './contexts/AuthContext'
 
 
 const Login = (props) => {
@@ -16,6 +16,7 @@ const Login = (props) => {
     const [passwordInputValue, setPasswordInputValue] = useState("");
     const [firebaseInitialized, setFirebaseInitialized] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    const { authUser: user, login } = useAuth();
 
     const navigate = useNavigate();
 
@@ -48,6 +49,10 @@ const Login = (props) => {
             }
             console.log(error);
         }
+    }
+
+    if (user) {
+        return <Navigate to="/" replace/>;
     }
 
     return (

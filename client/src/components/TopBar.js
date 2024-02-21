@@ -4,22 +4,10 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/AutoHelmLogo.png"
 import Explore from "../Explore";
 import {auth, signout} from "../firebase"
+import { useAuth } from '../contexts/AuthContext'
 
 const TopBar = () => {
-    const [user, setUser] = useState();
-
-    useEffect(() => {
-        setUser(auth.currentUser);
-    })
-
-    const logout = async () => {
-        try {
-            await signout();
-            setUser(auth.currentUser);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const { authUser: user, signout: logout } = useAuth();
 
     return (
         <div>
@@ -31,16 +19,20 @@ const TopBar = () => {
                     <p className="logoText">AutoHelm</p>
                 </Link>
                 <div className="topBarLinksContainer">
+                    
                     <Link to="/explore?q=" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
                         <p className="linkText">Explore</p>
                     </Link>
                     {
                         user ? (
-                            <>
-                                <Link className="topBarLinks" onClick={() => logout()}>
-                                    <p className="linkText">Sign Out</p>
+                            <div>
+                                <Link to="/myworkflows" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
+                                    <p className="linkText">My Workflows</p>
                                 </Link>
-                            </>
+                                <Link className="topBarLinks" onClick={() => logout()}>
+                                    <p className="linkText" style={{whiteSpace: 'nowrap'}}>Sign Out</p>
+                                </Link>
+                            </div>
                         ) : (
                             <>
                                 <Link to="/login" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
