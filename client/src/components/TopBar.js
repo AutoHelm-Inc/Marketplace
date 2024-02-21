@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css"
 import { Link } from "react-router-dom";
 import Logo from "../assets/AutoHelmLogo.png"
 import Explore from "../Explore";
+import {auth, signout} from "../firebase"
 
 const TopBar = () => {
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        setUser(auth.currentUser);
+    })
+
+    const logout = async () => {
+        try {
+            await signout();
+            setUser(auth.currentUser);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div>
             <div className="topBar">
@@ -18,9 +34,22 @@ const TopBar = () => {
                     <Link to="/explore?q=" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
                         <p className="linkText">Explore</p>
                     </Link>
-                    <Link to="/login" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
-                        <p className="linkText">Login</p>
-                    </Link>
+                    {
+                        user ? (
+                            <>
+                                <Link className="topBarLinks" onClick={() => logout()}>
+                                    <p className="linkText">Sign Out</p>
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/login" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
+                                    <p className="linkText">Login</p>
+                                </Link>
+                            </>
+                        )
+                    }
+                    
                 </div>
             </div>
         </div>
