@@ -28,18 +28,25 @@ const TopBar = () => {
                     {
                         user ? (
                             <div>
-                                <Link to="/myworkflows" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
-                                    <p className="linkText">My Workflows</p>
-                                </Link>
-                                <Link className="topBarLinks" onClick={() => logout()}>
-                                    <p className="linkText" style={{ whiteSpace: 'nowrap' }}>Sign Out</p>
-                                </Link>
+                                <div style={{ paddingLeft: 100 }}>
+                                    <Link to="/myworkflows" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
+                                        <p className="linkText">My Workflows</p>
+                                    </Link>
+                                </div>
+
+                                <div style={{ paddingLeft: 100 }}>
+                                    <Link className="topBarLinks" onClick={() => logout()}>
+                                        <p className="linkText" style={{ whiteSpace: 'nowrap' }}>Sign Out</p>
+                                    </Link>
+                                </div>
                             </div>
                         ) : (
                             <>
-                                <Link to="/login" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
-                                    <p className="linkText">Login</p>
-                                </Link>
+                                <div style={{ paddingLeft: 100 }}>
+                                    <Link to="/login" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
+                                        <p className="linkText">Login</p>
+                                    </Link>
+                                </div>
                             </>
                         )
                     }
