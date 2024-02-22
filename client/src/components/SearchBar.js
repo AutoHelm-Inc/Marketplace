@@ -9,18 +9,17 @@ const SearchBar = (props) => {
 
     const [inputValue, setInputValue] = useState(props.searchText);
 
-    const searchBarFunc = (event) => {
-        const query = event.target.value;
-        navigate(`/explore?q=${query}`);
+    const navURL = props.navURL;
 
+    const searchBarFunc = (event) => {
+        navigate(`${navURL}?q=${inputValue}`);
     };
 
     const searchIconFunc = (event) => {
-        const query = document.querySelector(".searchBar").value;
-        if (query == "") {
-            navigate(`/explore`);
+        if (inputValue == "") {
+            navigate(`${navURL}?q=`);
         } else {
-            navigate(`/explore?q=`);
+            navigate(`${navURL}?q=${inputValue}`);
         }
     };
 

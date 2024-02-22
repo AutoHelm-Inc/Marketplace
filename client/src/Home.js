@@ -15,7 +15,7 @@ const Home = () => {
                 <div className="HomeLeftSideContainer">
                     <h1 className="HomeScreenText">Automation Workflows</h1>
                     <h1 className="HomeScreenText">Made for Convenience.</h1>
-                    <SearchBar />
+                    <SearchBar searchText={""} navURL={"/explore"}/>
                     {/* <div className="PersonOnComputerContainerBottom">
                         <img src={PersonOnComputer} style={{ width: '90%'}} alt="Person on Computer" />
                     </div> */}
