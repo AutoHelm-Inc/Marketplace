@@ -22,12 +22,14 @@ const TopBar = () => {
                 </div>
                 <div className="topBarLinksContainer">
 
-                    <Link to="/explore?q=" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
-                        <p className="linkText">Explore</p>
-                    </Link>
+                    <div style={{ paddingLeft: 100 }}>
+                        <Link to="/explore?q=" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
+                            <p className="linkText">Explore</p>
+                        </Link>
+                    </div>
                     {
                         user ? (
-                            <div>
+                            <div className="topBarLinksContainer">
                                 <div style={{ paddingLeft: 100 }}>
                                     <Link to="/myworkflows" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
                                         <p className="linkText">My Workflows</p>
@@ -41,13 +43,13 @@ const TopBar = () => {
                                 </div>
                             </div>
                         ) : (
-                            <>
-                                <div style={{ paddingLeft: 100 }}>
-                                    <Link to="/login" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
-                                        <p className="linkText">Login</p>
-                                    </Link>
-                                </div>
-                            </>
+                            // <>
+                            <div style={{ paddingLeft: 100 }}>
+                                <Link to="/login" style={{ alignSelf: 'flex-start' }} className="topBarLinks">
+                                    <p className="linkText">Login</p>
+                                </Link>
+                            </div>
+                            // </>
                         )
                     }
 
