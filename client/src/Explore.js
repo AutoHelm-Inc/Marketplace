@@ -10,13 +10,15 @@ import NoSearchResults from './assets/no_search_results.svg'
 const Explore = (props) => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
-    const query = queryParams.get("q");
+    let query = queryParams.get("q");
 
     const [queriedJson, setQueriedJson] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
-
+            if (!query) {
+                query = "";
+            }
             const answer = await databaseToJson();
             const queriedData = searchDatabaseProjects(answer, query);
             console.log(queriedData)
