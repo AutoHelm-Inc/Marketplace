@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import AHILEntry from "./components/AHILEntry";
 import { useLocation } from "react-router-dom";
 import SearchBar from "./components/SearchBar";
-import { databaseToJson, searchDatabaseProjects } from './firebase';
+import { databaseToJson_Public, getPublicWorkflows } from './firebase';
 import NoSearchResults from './assets/no_search_results.svg'
 
 const Explore = (props) => {
@@ -19,8 +19,8 @@ const Explore = (props) => {
             if (!query) {
                 query = "";
             }
-            const answer = await databaseToJson();
-            const queriedData = searchDatabaseProjects(answer, query);
+            const answer = await databaseToJson_Public();
+            const queriedData = getPublicWorkflows(answer, query);
             console.log(queriedData)
             setQueriedJson(queriedData);
         };
