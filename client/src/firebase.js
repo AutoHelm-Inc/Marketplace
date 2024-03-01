@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
 import { getStorage, getDownloadURL, ref as sRef } from "firebase/storage";
 import { getDatabase, onValue, get, child, ref } from "firebase/database";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 //Firebase details
 const firebaseConfig = {
@@ -59,6 +59,10 @@ export function downloadAhilFile(storage, fileName, filePath, openLink) {
 
 export async function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
+}
+
+export async function signup(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password);
 }
 
 export const signout = async () => {
