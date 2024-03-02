@@ -78,8 +78,8 @@
   max-width: 450px;
   padding-right: 50px;
   padding-left: 50px;
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   border-radius: 20px;
 }
 
@@ -114,6 +114,9 @@
   color: white;
   font-size: 3vw;
   align-self: center;
+  margin-bottom: 0;
+  margin-top: 0;
+  /* background-color: aquamarine; */
 }
 
 .PolicyText {
@@ -122,12 +125,23 @@
   align-self: center;
 }
 
+.TextToSigninOrSignupPage {
+  text-decoration: none;
+  color: var(--DarkGreyText);
+  transition: color 0.2s;
+  font-size: 12;
+}
+
+.TextToSigninOrSignupPage:hover {
+  color: var(--BlueAccent);
+}
+
 @media screen and (min-width: 800px) {
   .PersonOnComputerContainerRight {
     display: flex;
     align-items: center;
     /* background-color: var(--BlueAccent); */
-    width: 50%;
+    width: 49%;
     overflow: hidden;
   }
 
@@ -140,11 +154,19 @@
 
   .HomeLeftSideContainer {
     /* background-color: var(--BlueAccent); */
+    flex-direction: column;
+    display: flex;
     align-self: center;
     padding-left: 0%;
     padding-right: 0%;
-    text-wrap: nowrap;
-    width: 40%;
+    /* text-wrap: nowrap; */
+    width: 51%;
+    align-items: center;
+  }
+
+  .homeExploreBarContainer {
+    margin-top: 6%;
+    width: 85%;
   }
 }
 
@@ -162,13 +184,14 @@
   }
 }
 
-.HomeLeftSideContainer {
-  /* background-color: var(--BlueAccent); */
+/* .HomeLeftSideContainer {
+  background-color: var(--BlueAccent);
   align-self: center;
   padding-left: 0%;
   padding-right: 0%;
   text-wrap: nowrap;
-}
+  align-items: center;
+} */
 
 .topBar {
   /* position: absolute; */
@@ -266,6 +289,18 @@
 }
 
 .passwordInput {
+  margin-top: 20;
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.passwordConfirmInput {
   margin-top: 20;
   width: 100%;
   padding-left: 0px;

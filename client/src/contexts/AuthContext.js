@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { auth, login, signout } from "../firebase";
+import { auth, login, signout, signup } from "../firebase";
 
 const AuthContext = React.createContext();
 
@@ -27,7 +27,8 @@ export const AuthProvider = ({ children }) => {
   const value = {
     authUser,
     login,
-    signout
+    signout,
+    signup
   };
 
   return (

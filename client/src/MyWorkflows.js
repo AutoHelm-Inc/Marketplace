@@ -7,6 +7,7 @@ import SearchBar from "./components/SearchBar";
 import { databaseToJson, searchDatabaseProjects, getUserWorkflows, auth, databaseToJson_Private, databaseToJson_Public } from './firebase';
 import NoSearchResults from './assets/no_search_results.svg'
 import { useAuth } from './contexts/AuthContext'
+import GridLines from 'react-gridlines';
 
 const MyWorkflows = (props) => {
     const location = useLocation();
@@ -25,7 +26,7 @@ const MyWorkflows = (props) => {
             const databaseJsonPublic = await databaseToJson_Public();
             let queriedData = getUserWorkflows(auth.currentUser.email, databaseJsonPrivate, databaseJsonPublic);
             console.log(queriedData);
-            if (query) {    
+            if (query) {
                 queriedData = queriedData.filter((workflow) => workflow["Name"].toLowerCase().includes(query.toLowerCase()));
             }
             setQueriedJson(queriedData);
@@ -34,30 +35,32 @@ const MyWorkflows = (props) => {
     }, [query]);
 
     if (!user) {
-        return <Navigate to="/" replace/>
+        return <Navigate to="/" replace />
     }
 
     return (
         <div className="explore">
-            <TopBar></TopBar>
-            <div className="exploreSearch">
-                <SearchBar searchText={location.search.substring(3)} navURL={"/myworkflows"} />
-            </div>
-            <div className="exploreContentContainer">
-                {queriedJson.length == 0 ?
-                    <div>
-                        <h1 style={{ color: "White", fontSize: 45, justifyContent: "center" }}>No Results!</h1>
-                        <div className="NoSearchResultsImageContainer">
-                            <img src={NoSearchResults} style={{ height: '55vh', alignSelf: 'flex-end' }} alt="Person on Computer" />
+            <GridLines className="grid-area" cellWidth={60} strokeWidth={2} cellWidth2={120} lineColor="#28282C">
+                <TopBar></TopBar>
+                <div className="exploreSearch">
+                    <SearchBar searchText={location.search.substring(3)} navURL={"/myworkflows"} />
+                </div>
+                <div className="exploreContentContainer">
+                    {queriedJson.length == 0 ?
+                        <div>
+                            <h1 style={{ color: "White", fontSize: 45, justifyContent: "center" }}>No Results!</h1>
+                            <div className="NoSearchResultsImageContainer">
+                                <img src={NoSearchResults} style={{ height: '55vh', alignSelf: 'flex-end' }} alt="Person on Computer" />
+                            </div>
                         </div>
-                    </div>
-                    :
-                    queriedJson.map((entry) => (
-                        <AHILEntry entryTitle={entry.Name} entryUsername={entry.Username} entryDateCreated={entry.Created} entryDescription={entry.Description} entryPath={entry.Path} />
-                    ))}
-            </div>
+                        :
+                        queriedJson.map((entry) => (
+                            <AHILEntry entryTitle={entry.Name} entryUsername={entry.Username} entryDateCreated={entry.Created} entryDescription={entry.Description} entryPath={entry.Path} />
+                        ))}
+                </div>
 
-            <Footer></Footer>
+                <Footer></Footer>
+            </GridLines>
         </div>
     );
 }

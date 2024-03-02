@@ -7,42 +7,47 @@ import PersonLoggingIn from './assets/person_logging_in.svg'
 import Teamwork from './assets/teamwork.svg'
 import ReactLoading from 'react-loading';
 
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { useAuth } from './contexts/AuthContext'
 
 
-const Login = (props) => {
+const Signup = (props) => {
     const [emailInputValue, setEmailInputValue] = useState("");
     const [passwordInputValue, setPasswordInputValue] = useState("");
+    const [passwordConfirmInputValue, setPasswordConfirmInputValue] = useState("");
     const [firebaseInitialized, setFirebaseInitialized] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
-    const { authUser: user, login } = useAuth();
+    const { authUser: user, signup, login } = useAuth();
 
     const navigate = useNavigate();
 
-    const signIn = async () => {
-        if (!emailInputValue || !passwordInputValue) {
+    const signUp = async () => {
+        if (passwordInputValue != passwordConfirmInputValue) {
+            setErrorMessage("Passwords do not match.");
+            return;
+        }
+        else if (!emailInputValue || !passwordInputValue) {
             setErrorMessage("Some field is empty.");
             return;
         }
         setErrorMessage(null);
         try {
+            await signup(emailInputValue, passwordInputValue);
             await login(emailInputValue, passwordInputValue);
             console.log(emailInputValue);
             navigate('/myworkflows');
         } catch (error) {
             switch (error.code) {
-                case "auth/user-disabled":
-                    setErrorMessage("The account has been disabled.");
+                case "auth/invalid-password":
+                    setErrorMessage("The password is invalid.");
                     break;
-                case "auth/user-not-found":
-                    setErrorMessage("The email or pass is incorrect.");
-                    break;
-                case "auth/wrong-password":
-                    setErrorMessage("Wrong Password.");
+                case "auth/email-already-in-use":
+                    setErrorMessage("The email is already in use.");
                     break;
                 case "auth/invalid-email":
                     setErrorMessage("The email is invalid.");
+                    break;
+                case "auth/weak-password":
+                    setErrorMessage("The password is too weak.");
                     break;
                 default:
                     setErrorMessage("Something went wrong. Please try again.");
@@ -98,17 +103,27 @@ const Login = (props) => {
                             paddingRight: 20,
                         }} className="passwordInput" value={passwordInputValue} placeholder="Password" onChange={(e) => setPasswordInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter'}
                         />
+
+                        <div style={{ height: 20 }}></div>
+
+                        <input type="password" style={{
+                            borderRadius: 20,
+                            fontSize: 15,
+                            paddingLeft: 20,
+                            paddingRight: 20,
+                        }} className="passwordConfirmInput" value={passwordConfirmInputValue} placeholder="Confirm Password" onChange={(e) => setPasswordConfirmInputValue(e.target.value)} onKeyPress={(e) => e.key === 'Enter'}
+                        />
+
                         <div style={{ color: '#ff4444', height: 60, display: "flex", alignItems: "center", justifyContent: "center" }}>{errorMessage}</div>
 
                         {/* <div style={{ height: 40 }}></div> */}
 
-                        <div onClick={() => { signIn(emailInputValue, passwordInputValue) }} className="loginButton" style={{ cursor: "pointer" }}>Login</div>
+                        <div onClick={() => { signUp(emailInputValue, passwordInputValue) }} className="loginButton" style={{ cursor: "pointer" }}>Sign Up</div>
 
                         <div style={{ height: 20 }}></div>
-                        <Link to="/signup" style={{ textDecoration: 'none' }}>
-                            <small className="TextToSigninOrSignupPage">Don't have an account? Sign Up!</small>
+                        <Link to="/login" style={{ textDecoration: 'none' }}>
+                            <small className="TextToSigninOrSignupPage">Already have an account? Log In!</small>
                         </Link>
-
                     </div>
 
                     <div style={{ height: 20 }}></div>
@@ -131,4 +146,4 @@ const Login = (props) => {
     );
 }
 
-export default Login;
+export default Signup;
