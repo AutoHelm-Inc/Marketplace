@@ -1,6 +1,7 @@
 # Marketplace
 ![Main Page](/autohelm_searchpage.png)
 ![Login Page](autohelm_loginpage.png)
+![Explore Page](autohelm_explorepage.png)
 ## General setup
 DONT USE WSL. It makes the run process much slower and doesn't have fast reload (reload on save). 
 I recommend use git bash
